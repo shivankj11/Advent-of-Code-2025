@@ -38,12 +38,13 @@ while q:
     if x == grid.shape[0] - 1:
         continue
     if grid[x+1, y] == '^':
-        add_unseen((x+1, y-1), q, seen)
-        cts[(x+1, y-1)] += cts[(x, y)]
-        add_unseen((x+1, y+1), q, seen)
-        cts[(x+1, y+1)] += cts[(x, y)]
+        left, right = (x+1, y-1), (x+1, y+1)
+        add_unseen(left, q, seen)
+        cts[left] += cts[(x, y)]
+        add_unseen(right, q, seen)
+        cts[right] += cts[(x, y)]
     else:
         add_unseen((x+1, y), q, seen)
         cts[(x+1, y)] += cts[(x, y)]
 
-print("Part 2:", sum(cts[x,y] for x,y in cts if x == grid.shape[0] - 1))
+print("Part 2:", sum(cts[x, y] for x,y in cts if x == grid.shape[0] - 1))
