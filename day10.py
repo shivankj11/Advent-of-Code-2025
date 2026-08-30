@@ -1,5 +1,4 @@
 from helpers import *
-from scipy.optimize import linprog
 
 with open('input10.txt', 'r') as f:
     text = f.read()
